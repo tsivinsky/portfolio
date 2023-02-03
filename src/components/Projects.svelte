@@ -14,7 +14,7 @@
 <div class="mt-6">
   <h2 class="text-xl sm:text-3xl mb-2">Projects</h2>
   {#each projects as project, i (i)}
-    <div>
+    <div class="w-fit">
       <a href={project.url} target="_blank" rel="noopener noreferrer"><h3>{project.name}</h3></a>
     </div>
   {/each}
