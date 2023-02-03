@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  font-family: monospace;
+
+  @apply text-base;
+}
+
+body {
+  @apply bg-neutral-900 text-white;
+}
+
+a {
+  @apply hover:underline;
+}
