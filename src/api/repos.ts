@@ -1,13 +1,8 @@
-import { github } from "./github";
+import type { Repo } from "../types/repos";
 
-export const getLatestRepos = async () => {
-  const resp = await github.repos.listForUser({
-    username: "tsivinsky",
-    sort: "updated",
-    per_page: 5,
-  });
+export const getLatestRepos = async (numberOfRepos = 5) => {
+  const resp = await fetch(`/api/repos?per_page=${numberOfRepos}`);
+  const data = (await resp.json()) as Repo[];
 
-  return resp.data;
+  return data;
 };
-
-export type LatestReposResult = Awaited<ReturnType<typeof getLatestRepos>>;

@@ -1,11 +1,16 @@
 <script lang="ts">
-  import Repo from "../components/Repo.svelte"
-  import GitHubLogo from "../components/GitHubLogo.svelte"
-  import Projects from "../components/Projects.svelte"
-  import Skills from "../components/Skills.svelte"
-  import type { PageData } from "./$types"
+  import Repo from "../components/Repo.svelte";
+  import GitHubLogo from "../components/GitHubLogo.svelte";
+  import Projects from "../components/Projects.svelte";
+  import Skills from "../components/Skills.svelte";
+  import Placeholder from "../components/Placeholder.svelte";
+  import { getLatestRepos } from "../api/repos";
 
-  export let data: PageData
+  const numberOfRepos = 5;
+
+  const placeholders = Array.from({ length: numberOfRepos }, (_, i) => i);
+
+  let reposData = getLatestRepos(numberOfRepos);
 </script>
 
 <div class="flex gap-x-4">
@@ -22,9 +27,19 @@
 
 <div class="mt-4">
   <h2 class="text-xl sm:text-3xl">Latest Repos</h2>
-  {#each data.repos as repo (repo.id)}
-    <Repo {repo} />
-  {/each}
+  <div class="flex flex-col gap-1">
+    {#await reposData}
+      {#each placeholders as _, i (i)}
+        <Placeholder width="300px" height="24px" />
+      {/each}
+    {:then repos}
+      {#each repos as repo (repo.id)}
+        <Repo {repo} />
+      {/each}
+    {:catch error}
+      <span>Error happened while fetching repos: {error.message}</span>
+    {/await}
+  </div>
 </div>
 <Projects />
 <Skills />
