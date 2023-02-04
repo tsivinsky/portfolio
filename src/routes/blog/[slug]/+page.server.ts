@@ -1,4 +1,4 @@
-import type { Load } from "@sveltejs/kit";
+import { type Load, redirect } from "@sveltejs/kit";
 import fs from "fs/promises";
 import path from "path";
 import fm from "front-matter";
@@ -19,6 +19,10 @@ export const load: Load = async ({ params }) => {
       const body = marked(metadata.body, { gfm: true });
       article = { ...metadata.attributes, body };
     }
+  }
+
+  if (!article) {
+    throw redirect(302, "/blog");
   }
 
   return {
