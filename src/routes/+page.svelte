@@ -4,6 +4,7 @@
   import Projects from "../components/Projects.svelte";
   import Skills from "../components/Skills.svelte";
   import Placeholder from "../components/Placeholder.svelte";
+  import Subtitle from "../components/Subtitle.svelte";
   import { getLatestRepos } from "../api/repos";
 
   const numberOfRepos = 5;
@@ -26,7 +27,7 @@
 </div>
 
 <div class="mt-4">
-  <h2 class="text-xl sm:text-3xl">Latest Repos</h2>
+  <Subtitle>Latest Repos</Subtitle>
   <div class="flex flex-col gap-1">
     {#await reposData}
       {#each placeholders as _, i (i)}

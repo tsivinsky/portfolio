@@ -1,14 +1,16 @@
 <script lang="ts">
+  import Subtitle from "./Subtitle.svelte";
+
   const skills = [
     { name: "React.js", bgColor: "#149eca", color: "#ffffff" },
     { name: "Next.js", bgColor: "#000000", color: "#ffffff" },
     { name: "TypeScript", bgColor: "#3178c6", color: "#ffffff" },
     { name: "Go", bgColor: "#79d4fd", color: "#000000" },
-  ]
+  ];
 </script>
 
 <div class="mt-6">
-  <h2 class="text-xl sm:text-3xl mb-2">Skills</h2>
+  <Subtitle class="mb-2">Skills</Subtitle>
   <div class="flex gap-2 flex-wrap">
     {#each skills as skill, i (i)}
       <span
