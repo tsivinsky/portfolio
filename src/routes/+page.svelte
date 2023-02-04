@@ -26,6 +26,8 @@
   </a>
 </div>
 
+<a href="/blog">my blog</a>
+
 <div class="mt-4">
   <Subtitle>Latest Repos</Subtitle>
   <div class="flex flex-col gap-1">
