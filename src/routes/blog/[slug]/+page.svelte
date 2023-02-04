@@ -7,6 +7,6 @@
 <a href="/blog" class="block mb-4">all articles</a>
 
 <h1>{data.article.title}</h1>
-<div class="unreset">
+<div class="unreset article">
   {@html data.article.body}
 </div>

@@ -1,0 +1,9 @@
+.article {
+  pre:has(code) {
+    @apply sm:w-fit;
+  }
+
+  pre code {
+    @apply rounded-md;
+  }
+}
